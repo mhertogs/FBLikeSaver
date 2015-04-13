@@ -1,0 +1,34 @@
+{
+  "manifest_version": 2,
+
+  "name": "FBLikeSaver",
+  "description": "Stop accidentally liking old FB posts",
+  "version": "1.0.0",
+
+  "page_action": {
+    "default_title": "FBLikeSaver",
+    "default_icon": "images/likesaver48.jpg",
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "images/likesaver16.jpg",
+    "48": "images/likesaver48.jpg",
+    "128": "images/likesaver128.jpg"
+  },
+  "permissions": [
+    "http://www.facebook.com/",
+    "https://www.facebook.com/",
+    "tabs",
+    "storage"
+  ],
+  "background": {
+    "scripts": ["bootstrap.js"],
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://www.facebook.com/*", "https://www.facebook.com/*"],
+      "js": ["lib/jquery-2.1.3.min.js", "likesaver.js"]
+    }
+  ]
+}
