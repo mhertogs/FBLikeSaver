@@ -7,13 +7,8 @@
 
   "page_action": {
     "default_title": "FBLikeSaver",
-    "default_icon": "images/likesaver48.jpg",
+    "default_icon": "images/likesaver19.png",
     "default_popup": "popup.html"
-  },
-  "icons": {
-    "16": "images/likesaver16.jpg",
-    "48": "images/likesaver48.jpg",
-    "128": "images/likesaver128.jpg"
   },
   "permissions": [
     "http://www.facebook.com/",

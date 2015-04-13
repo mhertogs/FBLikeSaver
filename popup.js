@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function(){
     });
 
     chrome.storage.sync.get("time_window", function(data) {
-        numInput.value = data["time_window"];
+        numInput.value = Math.floor(data["time_window"] / 86400); // changing seconds to days
     });
 
 
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function(){
     });
 
     numInput.addEventListener("change", function(){
-        chrome.storage.sync.set({time_window: numInput.value});
+        chrome.storage.sync.set({time_window: (numInput.value * 86400)});
     });
 
 
