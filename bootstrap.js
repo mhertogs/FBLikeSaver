@@ -1,6 +1,6 @@
 // when the extension is first installed
 chrome.runtime.onInstalled.addListener(function(details) {
-    chrome.storage.sync.set({time_window: 2419200}); // Default Time: 1 month
+    chrome.storage.sync.set({time_window: 1209600}); // Default Time: 2 weeks
     chrome.storage.sync.set({is_enabled: true});
 });
 

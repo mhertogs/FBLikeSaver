@@ -14,7 +14,14 @@ function fixLikes(){
                 if (postTime < curTime - timeWindow) {
                     $(this).find(".UFILikeLink").remove();
                 }
-            })
+            });
+            $(".fbPhotosPhotoFeedback").each(function(fbPhotosPhotoFeedback) {
+                postTime = $(this).find("abbr").attr("data-utime");
+                if (postTime < curTime - timeWindow) {
+                    $(this).find(".UFILikeLink").remove();
+                }
+            });
+            $("._5glz._53b").remove();
         }
     });
 }
@@ -31,4 +38,4 @@ function debounce(fn, delay) {
 }
 
 $(document).ready(fixLikes);
-$(document).scroll(debounce( fixLikes, 40 ));
+$(document).scroll(debounce( fixLikes, 20 ));

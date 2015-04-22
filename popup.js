@@ -1,25 +1,35 @@
 document.addEventListener('DOMContentLoaded', function(){
-
-    var input = document.getElementById('is-enabled');
-    var numInput = document.getElementById('time-window');
-
     // set the initial state of the checkbox
     chrome.storage.sync.get("is_enabled", function(data){
-        input.checked = data["is_enabled"];
+        $("#is-enabled").attr('checked', data["is_enabled"]);
+        if (data["is_enabled"]) {
+            $("#time-window").removeAttr('disabled');
+            $("#time-window").css({"opacity":"1"});
+        } else {
+            $("#time-window").attr('disabled','disabled');
+            $("#time-window").css({"opacity":".4"});
+        }
     });
 
+    // set the initial state of the time window
     chrome.storage.sync.get("time_window", function(data) {
-        numInput.value = Math.floor(data["time_window"] / 86400); // changing seconds to days
+        $("#time-window").attr('value', Math.floor(data["time_window"] / 86400));
     });
 
-
-    input.addEventListener("change", function(){
-        chrome.storage.sync.set({is_enabled: input.checked});
+    // Set up listeners to update settings
+    $('#is-enabled').bind('change', function(){
+        chrome.storage.sync.set({is_enabled: $('#is-enabled').is(':checked')});
+        if ($('#is-enabled').is(':checked')) {
+            $("#time-window").removeAttr('disabled');
+            $("#time-window").css({"opacity":"1"});
+        } else {
+            $("#time-window").attr('disabled','disabled');
+            $("#time-window").css({"opacity":".4"});
+        }
     });
 
-    numInput.addEventListener("change", function(){
-        chrome.storage.sync.set({time_window: (numInput.value * 86400)});
+    $('#time-window').bind('keyup mouseup', function(){
+        chrome.storage.sync.set({time_window: ($('#time-window').val() * 86400)});
     });
-
 
 });

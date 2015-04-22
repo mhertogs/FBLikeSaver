@@ -4,7 +4,7 @@
 </head>
 
 <body>
-<div style="width:160px; height:20px; font: normal 16px/18px 'ProximaNovaSemibold',Helvetica,Arial,sans-serif">
+<div style="width:140px; height:20px;">
     <form id="buzzkill" action="" method="">
         <label>
             <input type="checkbox" id="is-enabled" name="is-enabled" /> <span style="position:relative; top:3px;">Filter Likes?</span>
@@ -12,13 +12,14 @@
     </form>
     <form id="time_window" action="" method="">
         <label>
-            How many days is acceptable?
-            <input type="text" id="time-window" name="time-window" />
+            from
+            <input type="number" id="time-window" name="time-window" min="0" max="1000" style="width:30px"/>
+            days ago
         </label>
     </form>
 </div>
 
 <script src="popup.js"></script>
+<script src="lib/jquery-2.1.3.min.js"></script>
 </body>
 </html>
-
